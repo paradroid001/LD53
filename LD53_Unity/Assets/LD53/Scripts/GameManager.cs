@@ -4,28 +4,18 @@ using UnityEngine;
 
 namespace LD53
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoSingleton<GameManager>
     {
-        private static GameManager _instance;
 
-        public GameManager instance
+        public void Start()
         {
-            get { return _instance; }
+            Test();
         }
 
-        void Awake()
+        public void Test()
         {
-            if (_instance == null)
-            {
-                _instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            Log.Debug("GameManager Testing");
         }
-
     }
 
 }
